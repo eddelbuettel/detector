@@ -15,7 +15,6 @@ jobs:
       matrix:
         include:
           - {os: macOS-latest}
-          - {os: macOS-15-intel}
           #- {os: ubuntu-slim}
           - {os: ubuntu-latest}
 
