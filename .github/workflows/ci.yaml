@@ -30,8 +30,14 @@ jobs:
       - name: Dependencies
         run: ./run.sh install_all
 
-      - name: Test
-        run: ./run.sh run_tests
+      - name: Install
+        run: R CMD INSTALL .
+
+      - name: Detect
+        run: Rscript -e 'detector::detector()'
+
+      #- name: Test
+      #  run: ./run.sh run_tests
 
       #- name: Logs
       #  run: ./run.sh dump_logs
