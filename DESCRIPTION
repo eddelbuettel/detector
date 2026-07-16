@@ -1,0 +1,12 @@
+Package: detector
+Type: Package
+Title: Detect (and Report) Compile-Time Platform
+Version: 0.0.1
+Date: 2026-07-16
+Authors@R: person("Dirk", "Eddelbuettel", role = c("aut", "cre"), email = "edd@debian.org")
+Description: Report compile-time per-platform switches in a named vector.
+URL: https://github.com/eddelbuettel/detector
+BugReports: https://github.com/eddelbuettel/detector/issues
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.1.2)
+LinkingTo: Rcpp
