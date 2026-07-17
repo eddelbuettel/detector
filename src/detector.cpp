@@ -8,57 +8,72 @@
 //' @title detector
 //'
 //' @description Store a number of different compile-time \code{#define} values
-//' and return them in a named character vector.
+//' and returns them in a named character vector.
 //'
-//' @return A named character vector.
+//' @return A named logical vector.
 //' @useDynLib detector, .registration=TRUE
 //' @importFrom Rcpp evalCpp
 //' @export
 // [[Rcpp::export]]
-Rcpp::CharacterVector detector() {
-  Rcpp::CharacterVector v(10);
+Rcpp::LogicalVector detector() {
+  Rcpp::LogicalVector v(9);  // defaults to all zeros, ie all FALSE
 
 #if defined(__APPLE__)
-  v[0] = "set";
+  v[0] = TRUE;
 
   #if TARGET_OS_OSX
-  v[1] = "set";
+  v[1] = TRUE;
   #endif
 
   #if TARGET_CPU_ARM64
-  v[2] = "set";
+  v[2] = TRUE;
   #endif
 
   #if TARGET_CPU_X86_64
-  v[3] = "set";
+  v[3] = TRUE;
   #endif
 
 #endif
 
 #if defined(__MACH__)
-  v[4] = "set";
+  v[4] = TRUE;
 #endif
 
 #if defined(__x86_64__)
-  v[5] = "set";
+  v[5] = TRUE;
 #endif
 
 #if defined(__linux__)
-  v[6] = "set";
+  v[6] = TRUE;
 #endif
 
 #if defined(__GLIBC__)
-  v[7] = "set";
+  v[7] = TRUE;
 #endif
 
 #if defined(__clang__)
-  v[8] = "set";
+  v[8] = TRUE;
 #endif
 
-  v[9] = std::to_string(__cplusplus);
-
   v.names() = Rcpp::CharacterVector::create("Apple", "Apple_OS_X", "Apple_ARM64", "Apple_X86_64",
-                                            "MACH", "X86_64", "Linux", "Glibc", "clang", "C++");
+                                            "MACH", "X86_64", "Linux", "Glibc", "clang");
+
+  return v;
+}
+
+//' @title versions
+//'
+//' @description Store the C++ compilation standard and returns it in a named integer vector.
+//'
+//' @return A named integer vector.
+//' @export
+// [[Rcpp::export]]
+Rcpp::IntegerVector versions() {
+  Rcpp::IntegerVector v(1);
+
+  v[0] = __cplusplus;
+
+  v.names() = Rcpp::CharacterVector::create("C++");
 
   return v;
 }

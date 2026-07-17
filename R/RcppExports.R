@@ -4,13 +4,23 @@
 #' @title detector
 #'
 #' @description Store a number of different compile-time \code{#define} values
-#' and return them in a named character vector.
+#' and returns them in a named character vector.
 #'
-#' @return A named character vector.
+#' @return A named logical vector.
 #' @useDynLib detector, .registration=TRUE
 #' @importFrom Rcpp evalCpp
 #' @export
 detector <- function() {
     .Call(`_detector_detector`)
+}
+
+#' @title versions
+#'
+#' @description Store the C++ compilation standard and returns it in a named integer vector.
+#'
+#' @return A named integer vector.
+#' @export
+versions <- function() {
+    .Call(`_detector_versions`)
 }
 

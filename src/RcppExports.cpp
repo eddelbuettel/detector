@@ -11,7 +11,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
 // detector
-Rcpp::CharacterVector detector();
+Rcpp::LogicalVector detector();
 RcppExport SEXP _detector_detector() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -20,9 +20,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// versions
+Rcpp::LogicalVector versions();
+RcppExport SEXP _detector_versions() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(versions());
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_detector_detector", (DL_FUNC) &_detector_detector, 0},
+    {"_detector_versions", (DL_FUNC) &_detector_versions, 0},
     {NULL, NULL, 0}
 };
 

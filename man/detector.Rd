@@ -6,9 +6,9 @@
 detector()
 }
 \value{
-A named character vector.
+A named logical vector.
 }
 \description{
 Store a number of different compile-time \code{#define} values
-and return them in a named character vector.
+and returns them in a named character vector.
 }
