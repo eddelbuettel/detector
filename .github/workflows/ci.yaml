@@ -34,7 +34,7 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Detect
-        run: Rscript -e 'detector::detector()'
+        run: Rscript -e 'detector::detector(); detector::versions()'
 
       #- name: Test
       #  run: ./run.sh run_tests
